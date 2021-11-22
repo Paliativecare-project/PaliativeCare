@@ -87,8 +87,8 @@
                     <div class="main-nav__main-navigation">
                         <ul class="main-nav__navigation-box">
                             <li class="dropdown">
-                                <a href="index.html">Home</a>
-                                <ul>
+                                <a href="">Home</a>
+                                <!--<ul>
                                     <li><a href="index.html">Default Home</a></li>
                                     <li><a href="index-2.html">Nursing Home</a></li>
                                     <li><a href="index-3.html">Assisted Living</a></li>
@@ -105,19 +105,15 @@
                                             <li><a href="index-5.html">Header 05</a></li>
                                         </ul>
                                     </li>
-                                </ul>
+                                </ul>-->
                             </li>
                             <li class="dropdown">
-                                <a href="about-1.html">About</a>
-                                <ul>
-                                    <li><a href="about-1.html">About One</a></li>
-                                    <li><a href="about-2.html">About Two</a></li>
-                                    <li><a href="team.html">Team Page</a></li>
-                                </ul>
+                                <a href="{% url 'about'  %}">About</a>
+                                
                             </li>
                             <li class="dropdown">
                                 <a href="{% url 'services'  %}">Services</a>
-                                <ul>
+                                <!--<ul>
                                     <li><a href="{% static 'services.html' %}">Services</a></li>
                                     <li>
                                         <a href="service-physical.html">Physical Therapy</a>
@@ -129,9 +125,9 @@
                                     </li>
                                     <li><a href="service-dementia.html">Dementia Care</a></li>
                                     <li><a href="service-assisted.html">Assisted Living</a></li>
-                                </ul>
+                                </ul>-->
                             </li>
-                            <li class="dropdown">
+                            <!--<li class="dropdown">
                                 <a href="#">Pages</a>
                                 <ul>
                                     <li><a href="story.html">Stroy</a></li>
@@ -176,7 +172,7 @@
                                                     <li><a href="blog-grid.html">News Grid</a></li>
                                                     <li><a href="blog-details.html">News Details</a></li>
                                                 </ul>
-                                            </li>
+                                            </li>-->
                                             <li><a href="{% url 'contact'  %}">Contact</a></li>
                                             
                                         </ul>

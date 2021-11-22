@@ -7,3 +7,5 @@ def services(request):
     return render(request,'care/services.html')
 def contact(request):
     return render(request,'care/contact.html')
+def about(request):
+    return render(request,'care/about.html')
