@@ -6,17 +6,17 @@
 
 
 
-        <section class="page-header" style="background-image: url(static/images/background/page-header-about-1.jpg);">
+        <section class="page-header" style="background-image: url({% static 'images/background/page-header-about-1.jpg' %});">
             <div class="container">
                 <h2>About Us</h2>
                 <ul class="list-unstyled thm-breadcrumb">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{% url 'home'%}">Home</a></li>
                     <li><span>About Us</span></li>
                 </ul><!-- /.list-unstyled -->
             </div><!-- /.container -->
         </section><!-- /.page-header -->
 
-
+ 
         <section class="about-two">
             <div class="container">
                 <div class="row">
@@ -38,7 +38,7 @@
                                     Medication Management
                                 </li>
                             </ul><!-- /.blog-details__list -->
-                            <img src=" 'static/images/resources/about-1-1-sign.png'" alt="">
+                            <img src= "static/images/resources/about-1-1-sign.png" alt="">
 
                         </div><!-- /.about-two__content -->
                     </div><!-- /.col-lg-5 -->
@@ -102,8 +102,8 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="faq-three__image wow fadeInLeft" data-wow-duration="1500ms">
-                            <img src="assets/images/shapes/faq-2-dot.png" class="faq-three__image-dots" alt="">
-                            <img src="assets/images/resources/faq-2-1.jpg" alt="">
+                            <img src="static/images/shapes/faq-2-dot.png" class="faq-three__image-dots" alt="">
+                            <img src="static/images/resources/faq-2-1.jpg" alt="">
                         </div><!-- /.faq-three__image -->
                     </div><!-- /.col-lg-6 -->
                     <div class="col-lg-6">
@@ -167,7 +167,7 @@
                     <div class="col-lg-4 wow fadeInLeft" data-wow-duration="1500ms">
                         <div class="team-one__single">
                             <div class="team-one__image">
-                                <img src="assets/images/team/team-1-1.jpg" alt="">
+                                <img src="static/images/team/team-1-1.jpg" alt="">
                             </div><!-- /.team-one__image -->
                             <div class="team-one__content">
                                 <div class="team-one__content-inner">
@@ -185,7 +185,7 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms">
                         <div class="team-one__single">
                             <div class="team-one__image">
-                                <img src="assets/images/team/team-1-2.jpg" alt="">
+                                <img src="static/images/team/team-1-2.jpg" alt="">
                             </div><!-- /.team-one__image -->
                             <div class="team-one__content">
                                 <div class="team-one__content-inner">
@@ -224,7 +224,7 @@
 
         <section class="appointment-one appointment-one__about-page">
 
-            <img src="assets/images/resources/appointment-person-1-1.png" class="appointment-one__moc" alt="">
+            <img src="static/images/resources/appointment-person-1-1.png" class="appointment-one__moc" alt="">
             <div class="container">
                 <div class="row justify-content-end">
                     <div class="col-lg-6">

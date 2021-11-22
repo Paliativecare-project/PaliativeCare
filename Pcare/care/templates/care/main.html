@@ -87,7 +87,7 @@
                     <div class="main-nav__main-navigation">
                         <ul class="main-nav__navigation-box">
                             <li class="dropdown">
-                                <a href="">Home</a>
+                                <a href="{% url 'home' %}">Home</a>
                                 <!--<ul>
                                     <li><a href="index.html">Default Home</a></li>
                                     <li><a href="index-2.html">Nursing Home</a></li>
@@ -174,10 +174,35 @@
                                                 </ul>
                                             </li>-->
                                             <li><a href="{% url 'contact'  %}">Contact</a></li>
+                                             <li class="dropdown">
+                                <a href=" ">Login</a>
+                                <ul>
+                                    <li><a href="">Admin</a></li>
+                                    <li>
+                                        <a href="">Service Provider</a>
+                                    </li>
+                                    <li><a href="">User</a></li>
+                                    
+                                </ul>
+                            </li>
+                                            
                                             
                                         </ul>
+                                       
+                    <!-- /.main-nav__main-navigation -->
                                         <!-- /.main-nav__navigation-box -->
                     </div>
+                    <!--<li class="dropdown">
+                                <a href=" ">Login</a>
+                                <ul>
+                                    <li><a href="">Admin</a></li>
+                                    <li>
+                                        <a href="">Service Provider</a>
+                                    </li>
+                                    <li><a href="">User</a></li>
+                                    
+                                </ul>
+                            </li>-->
                     <!-- /.main-nav__main-navigation -->
                     <div class="main-nav__right">
                         <a href="contact.html" class="thm-btn main-nav-one__btn"><i class="far fa-clock"></i> Appointment</a
