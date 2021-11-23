@@ -11,4 +11,8 @@ def about(request):
     return render(request,'care/about.html')
 def adminlogin(request):
     return render(request,'care/adminlogin.html')
+def adminlogin(request):
+    return render(request,'care/adminlogin.html')
+def adminhome(request):
+    return render(request,'care/adminhome.html')
     
