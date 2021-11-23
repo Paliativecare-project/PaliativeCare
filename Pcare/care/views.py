@@ -9,3 +9,6 @@ def contact(request):
     return render(request,'care/contact.html')
 def about(request):
     return render(request,'care/about.html')
+def adminlogin(request):
+    return render(request,'care/adminlogin.html')
+    
