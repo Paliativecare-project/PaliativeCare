@@ -4,4 +4,13 @@ __pycache__/
 .venv
 venv/
 .__pycache__/
+.migrations
+.migrations/
+__pycache__/
+
+
+.palliative/
+__pycache__/
+.palliative
+palliative/
 
