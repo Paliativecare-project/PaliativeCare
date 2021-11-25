@@ -9,6 +9,7 @@ def contact(request):
     return render(request,'care/contact.html')
 def about(request):
     return render(request,'care/about.html')
+
 def adminlogin(request):
     return render(request,'care/adminlogin.html')
 def adminlogin(request):
@@ -16,3 +17,7 @@ def adminlogin(request):
 def adminhome(request):
     return render(request,'care/adminhome.html')
     
+
+def register(request):
+    return render(request,'care/user_reg.html')
+
