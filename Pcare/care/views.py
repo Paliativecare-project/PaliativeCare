@@ -16,6 +16,8 @@ def adminlogin(request):
     return render(request,'care/adminlogin.html')
 def adminhome(request):
     return render(request,'care/adminhome.html')
+def adminservice(request):
+    return render(request,'care/adminservice.html')
     
 
 def register(request):
