@@ -18,7 +18,8 @@ def adminhome(request):
     return render(request,'care/adminhome.html')
 def adminservice(request):
     return render(request,'care/adminservice.html')
-    
+def adminverify(request):
+    return render(request,'care/adminverify.html')   
 
 def register(request):
     return render(request,'care/user_reg.html')

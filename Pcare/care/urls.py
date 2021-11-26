@@ -12,6 +12,6 @@ urlpatterns = [
     path('adminservice/',views.adminservice,name="adminservice"),
     path('register/',views.register,name="register"),
     path('login/',views.login,name="servicelogin"),
-    
+    path('adminverify/',views.adminverify,name="adminverify"),
 
     ]

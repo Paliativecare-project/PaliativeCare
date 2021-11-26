@@ -1,0 +1,43 @@
+{% extends 'care/amain.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<section style="background-image: url({% static 'images/background/page-header-bg-1-1.jpg' %});">
+    <div class="center">
+    <h1>Verify Service Provider</h1>
+
+    <table id = "users">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>License Number</th>
+            <th>Action</th>
+        </tr>
+
+       
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <form >
+                    <input type = "hidden" name  ="id" value = ""/>
+                    <input type = "submit" name  ="approve" value = "Approve"/>
+                    <input type = "submit" name  ="deny" value = "Deny"/>
+                </form>
+            </td>
+        </tr>
+        
+    </table>
+
+    
+</div>
+</section>
+</body>
+</html>
+{% endblock %}
