@@ -22,4 +22,5 @@ def adminservice(request):
 
 def register(request):
     return render(request,'care/user_reg.html')
-
+def login(request):
+    return render(request,'care/Service_login.html')
