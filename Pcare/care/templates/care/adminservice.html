@@ -6,7 +6,8 @@
 
    
  <section style="background-image: url({% static 'images/background/page-header-bg-1-1.jpg' %});"> 
-<form id="form">
+<form id="form" method="post">
+{% csrf_token %}
  <h1>ADD SERVICE</h1>
         <!-- Details -->
         <div class="">
@@ -16,8 +17,7 @@
         </div>
         <div class="">
             <!-- Input Type Text -->
-            <input type="text"
-                   id="name"
+            <input type="text" name="s_name"
                    placeholder="Service name" />
         </div><br/>
   

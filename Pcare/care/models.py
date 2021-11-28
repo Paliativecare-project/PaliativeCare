@@ -24,4 +24,10 @@ class Service(models.Model):
 
     def __str__(self):
         return self.name
- 
+
+class Adminlogin(models.Model):
+    a_name=models.CharField(max_length=255)
+    a_password=models.CharField(max_length=16)
+
+class Addservice(models.Model):
+    s_name=models.CharField(max_length=255)  
