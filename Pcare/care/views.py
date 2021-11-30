@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Addservice
 from .models import Adminlogin
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 # Create your views here.
 def index(request):
     return render(request,'care/index.html')
@@ -14,19 +15,24 @@ def about(request):
 
 def adminlogin(request):
     if request.method == 'POST':
-        username=request.POST['username']
-        password=request.POST['password'] 
-        check_if_user_exists = Adminlogin.objects.filter(yourtablefield="username").exists()
-        if check_if_user_exists:
-            user = authenticate(request, username=username, password=password)
-
+        a_name=request.POST.get('a_name')
+        a_password=request.POST.get('a_password')
+        
+        user=Adminlogin.objects.filter(a_name=a_name,a_password=a_password).first()
+        
         if user is not None:
-            return ('adminhome')
             
-    else:    
-        return render(request,'care/adminlogin.html')
-def adminlogin(request):
-    return render(request,'care/adminlogin.html')
+            return redirect("adminhome")
+           
+        else: 
+            messages.success(request,"Username or password is incorrect") 
+    context={}        
+    
+    return render(request,'care/adminlogin.html',context)
+      
+            
+#def adminlogin(request):
+#     return render(request,'care/adminlogin.html')
 def adminhome(request):
     return render(request,'care/adminhome.html')
 def adminservice(request):
@@ -35,6 +41,7 @@ def adminservice(request):
         obj=Addservice()
         obj.s_name=s_name
         obj.save()
+         
     return render(request,'care/adminservice.html')
 def adminverify(request):
     return render(request,'care/adminverify.html')   
