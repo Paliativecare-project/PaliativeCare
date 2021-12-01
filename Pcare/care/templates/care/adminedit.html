@@ -7,32 +7,29 @@
 <body>
 <section style="background-image: url({% static 'images/background/page-header-bg-1-1.jpg' %});">
     <div class="center">
-    <h1 style="color:black;text-align:center">VERIFY SERVICE PROVIDER</h1>
+    <h1 style="color:black;text-align:center">EDIT OR DELETE SERVICES</h1>
 
     <table id = "users">
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Email Address</th>
-            <th>License Number</th>
+            <th>Service Name</th>
             <th>Action</th>
         </tr>
-
+        {% for i in item_list %}
        
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.s_name}}</td>
+            
             <td>
                 <!--<form >
                     <input type = "hidden" name  ="id" value = ""/>-->
-                    <input style="background-color:green;" type = "submit" name  ="approve" value = "Approve"/>
-                    <input style="background-color:red;" type = "submit" name  ="deny" value = "Deny"/>
+                   <a class ='btn btn-danger' style="background-color:green;" type = "submit" name  ="edit" />EDIT</a>
+                <a href ="" class ='btn btn-danger' style="background-color:red;" type = "submit" name  ="delete" />DELETE</a>
                 <!--</form>-->
             </td>
         </tr>
-        
+        {% endfor %}
     </table>
 
     

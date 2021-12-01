@@ -3,13 +3,16 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-
+<body>
+<section style="background-image: url({% static 'images/background/page-header-bg-1-1.jpg' %});">
    
- <section style="background-image: url({% static 'images/background/page-header-bg-1-1.jpg' %});"> 
-     
+ 
+ 
 <form id="form" method="post">
 {% csrf_token %}
-
+{% for message in messages %}
+<p style="color:black;text-align:center">{{message}}</p>   
+{% endfor %} 
  <h1>ADD SERVICE</h1>
         <!-- Details -->
         <div class="">
@@ -32,6 +35,7 @@
     </form>
 </section>
 
+</body>
 
 </html>
 {% endblock %}

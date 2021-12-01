@@ -1,4 +1,5 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
+from django.http.response import HttpResponse
 from .models import Addservice
 from .models import Adminlogin
 from django.contrib.auth import authenticate,login,logout
@@ -41,8 +42,16 @@ def adminservice(request):
         obj=Addservice()
         obj.s_name=s_name
         obj.save()
-         
+        messages.info(request,"Service Added")
+    else:
+        pass 
     return render(request,'care/adminservice.html')
+def adminedit(request):
+    item_list=Addservice.objects.all()
+    context={
+        'item_list' : item_list
+    }
+    return render(request,'care/adminedit.html',context)
 def adminverify(request):
     return render(request,'care/adminverify.html')   
 
@@ -50,3 +59,4 @@ def register(request):
     return render(request,'care/user_reg.html')
 def login(request):
     return render(request,'care/Service_login.html')
+
