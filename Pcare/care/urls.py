@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from care.views import update,delete
 urlpatterns = [
     path('',views.index,name="home"),
     path('services/',views.services, name="services"),
@@ -14,5 +14,7 @@ urlpatterns = [
     path('login/',views.login,name="servicelogin"),
     path('adminverify/',views.adminverify,name="adminverify"),
     path('adminedit/',views.adminedit,name="adminedit"),
-    
+    path('update/<int:id>/',update,name="update"),
+    path('delete/<int:id>/',delete,name="delete"),
+    path('logout/',views.logout_view,name="logout"),
     ]

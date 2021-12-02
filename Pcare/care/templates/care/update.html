@@ -1,0 +1,43 @@
+{% extends 'care/amain.html' %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<section style="background-image: url({% static 'images/background/page-header-bg-1-1.jpg' %});">
+    <div class="center">
+    <h1 style="color:black;text-align:center">UPDATE SERVICE </h1>
+
+    <table id = "users">
+        <tr>
+            
+            <th>Service Name</th>
+            
+            <th>Action</th>
+        </tr>
+
+       
+        <tr>
+            <form method="POST">
+            {% csrf_token %}
+            <td>{{form.s_name}}</td>
+            
+            <td>
+                
+                    <!--<input type = "hidden" name  ="id" value = ""/>-->
+                    
+                    <input type ="submit" class ='btn btn-danger' value="Update">
+                </form>
+            </td>
+        </tr>
+        
+    </table>
+
+    
+</div>
+</section>
+</body>
+</html>
+{% endblock %}

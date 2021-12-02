@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect,HttpResponse
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .models import Addservice
 from .models import Adminlogin
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from .forms import TodoForm
 # Create your views here.
 def index(request):
     return render(request,'care/index.html')
@@ -60,3 +61,22 @@ def register(request):
 def login(request):
     return render(request,'care/Service_login.html')
 
+def update(request,id):
+    context={}
+    todo=Addservice.objects.get(id=id)
+    form=TodoForm(instance=todo)
+    if request.method == 'POST':
+        form=TodoForm(request.POST,instance=todo)
+        if form.is_valid():
+            form.save()
+            return redirect('adminedit')
+    
+    return render(request,'care/update.html',{'form':form})
+def delete(request,id):
+    if request.method == 'POST':
+        Addservice.objects.get(id=id).delete()
+        return redirect('adminedit')
+def logout_view(request):
+    logout(request)
+    return redirect('adminlogin')
+        
