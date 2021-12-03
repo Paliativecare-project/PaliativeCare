@@ -15,6 +15,11 @@ def contact(request):
 def about(request):
     return render(request,'care/about.html')
 
+def user_login(request):
+    return render(request,'care/user_login.html')
+def user_reg(request):
+    return render(request,'care/user_reg.html')
+
 def adminlogin(request):
     if request.method == 'POST':
         a_name=request.POST.get('a_name')
@@ -56,8 +61,8 @@ def adminedit(request):
 def adminverify(request):
     return render(request,'care/adminverify.html')   
 
-def register(request):
-    return render(request,'care/user_reg.html')
+
+
 def login(request):
     return render(request,'care/Service_login.html')
 
