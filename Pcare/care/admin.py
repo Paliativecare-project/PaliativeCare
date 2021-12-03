@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(User)
 admin.site.register(Addservice)
 admin.site.register(Adminlogin)
+admin.site.register(Servicesmodel)

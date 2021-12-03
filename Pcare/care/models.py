@@ -13,7 +13,8 @@ class User(models.Model):
     
     def __str__(self):
       return self.u_name
-class Service(models.Model):
+  
+class Servicesmodel(models.Model):
     name=models.CharField(max_length=100,blank=False)
     addr=models.CharField(max_length=100,blank=False)
     phn=models.IntegerField()
@@ -21,6 +22,8 @@ class Service(models.Model):
     pincode=models.IntegerField(blank=False)
     email=models.EmailField(max_length=70,blank=False)
     password=models.CharField(max_length=70,blank=False)
+    s_license=models.CharField(max_length=100,blank=False)
+    status=models.BooleanField(blank=False,default=False)
 
     def __str__(self):
         return self.name
