@@ -17,6 +17,7 @@ urlpatterns = [
     path('user_reg/',views.user_reg,name="user_reg"),
     
     path('login/',views.login,name="servicelogin"),
+     path('service_reg/',views.service_reg,name="service_reg"),
     path('adminverify/',views.adminverify,name="adminverify"),
     path('adminedit/',views.adminedit,name="adminedit"),
     path('update/<int:id>/',update,name="update"),
