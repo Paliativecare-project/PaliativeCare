@@ -17,7 +17,7 @@ def about(request):
 
 def user_login(request):
     return render(request,'care/user_login.html')
-def user_reg(request):
+def user_reg(request): 
     return render(request,'care/user_reg.html')
 def service_reg(request):
     return render(request,'care/service_reg.html')
