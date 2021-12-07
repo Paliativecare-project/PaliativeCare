@@ -13,6 +13,16 @@ class User(models.Model):
     
     def __str__(self):
       return self.u_name
+class Users(models.Model):
+    u_name=models.CharField(max_length=255)
+    u_email=models.EmailField((""), max_length=254)
+    u_phn=models.IntegerField()
+    u_address=models.CharField(max_length=255)
+    u_password=models.CharField(max_length=16)  
+    u_confpass=models.CharField(max_length=16)  
+    
+    def __str__(self):
+      return self.u_name
   
 class Servicesmodel(models.Model):
     name=models.CharField(max_length=100,blank=False)
