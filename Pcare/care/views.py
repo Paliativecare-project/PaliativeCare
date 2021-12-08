@@ -26,7 +26,7 @@ def user_login(request):
         
         if user is not None:
             
-            return redirect("adminhome")
+            return redirect("userhome")
            
         else: 
             messages.success(request,"Username or password is incorrect") 
@@ -57,6 +57,13 @@ def user_reg(request):
         
 
     return render(request,'care/user_reg.html')
+
+def userhome(request):
+    return render(request,'care/userhome.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect('user_login')
 #def user_reg(request): 
 
   #  return render(request,'care/user_reg.html')
@@ -169,4 +176,6 @@ def delete(request,id):
 def logout_view(request):
     logout(request)
     return redirect('adminlogin')
+
+
         
