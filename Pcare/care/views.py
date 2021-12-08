@@ -17,7 +17,7 @@ def about(request):
     return render(request,'care/about.html')
 
 def user_login(request):
-<<<<<<< HEAD
+
     if request.method == 'POST':
         u_email=request.POST.get('u_email')
         u_password=request.POST.get('u_password')
@@ -55,10 +55,10 @@ def user_reg(request):
         pass
 
         
-=======
+
     return render(request,'care/user_login.html')
 def user_reg(request): 
->>>>>>> my-feature
+
     return render(request,'care/user_reg.html')
 def service_reg(request):
     return render(request,'care/service_reg.html')
