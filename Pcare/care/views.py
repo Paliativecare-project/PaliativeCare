@@ -56,10 +56,10 @@ def user_reg(request):
 
         
 
-    return render(request,'care/user_login.html')
-def user_reg(request): 
-
     return render(request,'care/user_reg.html')
+#def user_reg(request): 
+
+  #  return render(request,'care/user_reg.html')
 def service_reg(request):
     if request.method=='POST':
         name=request.POST['name']
@@ -124,7 +124,11 @@ def adminedit(request):
     }
     return render(request,'care/adminedit.html',context)
 def adminverify(request):
-    return render(request,'care/adminverify.html')   
+    item_list=Servicesmodel.objects.all()
+    context={
+        'item_list' : item_list
+    }
+    return render(request,'care/adminverify.html',context)   
 
 
 
@@ -157,6 +161,7 @@ def update(request,id):
             return redirect('adminedit')
     
     return render(request,'care/update.html',{'form':form})
+
 def delete(request,id):
     if request.method == 'POST':
         Addservice.objects.get(id=id).delete()
