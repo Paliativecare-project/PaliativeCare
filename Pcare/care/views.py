@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.http.response import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
-from .models import Addservice
+from .models import Addservice, Users
 from .models import Adminlogin
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .forms import TodoForm
+from django.contrib.auth.models import User,auth
 # Create your views here.
 def index(request):
     return render(request,'care/index.html')
@@ -16,8 +17,43 @@ def about(request):
     return render(request,'care/about.html')
 
 def user_login(request):
-    return render(request,'care/user_login.html')
+    if request.method == 'POST':
+        u_email=request.POST.get('u_email')
+        u_password=request.POST.get('u_password')
+        
+        user=Users.objects.filter(u_email=u_email,u_password=u_password).first()
+        
+        if user is not None:
+            
+            return redirect("adminhome")
+           
+        else: 
+            messages.success(request,"Username or password is incorrect") 
+    context={}        
+    
+    return render(request,'care/user_login.html',context)
+      
+            
+    #return render(request,'care/user_login.html')
 def user_reg(request):
+    if request.method=='POST':
+        u_name=request.POST['u_name']
+        u_email=request.POST['u_email']
+        u_phn=request.POST['u_phn']
+        u_address=request.POST['u_address']
+        u_password=request.POST['u_password']
+        obj1=Users()
+        obj1.u_name=u_name
+        obj1.u_email=u_email
+        obj1.u_phn=u_phn
+        obj1.u_address=u_address
+        obj1.u_password=u_password
+        obj1.save()
+        return render(request,'care/user_login.html')
+    else:
+        pass
+
+        
     return render(request,'care/user_reg.html')
 def service_reg(request):
     return render(request,'care/service_reg.html')
