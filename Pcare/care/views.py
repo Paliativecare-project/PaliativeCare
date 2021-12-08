@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.http.response import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
-from .models import Addservice, Users
+from .models import Addservice, Users,Servicesmodel
 from .models import Adminlogin
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
@@ -61,6 +61,28 @@ def user_reg(request):
 
     return render(request,'care/user_reg.html')
 def service_reg(request):
+    if request.method=='POST':
+        name=request.POST['name']
+        s_license=request.POST['s_license']
+        phn=request.POST['phn']
+        addr=request.POST['addr']
+        distric=request.POST['distric']
+        password=request.POST['password']
+        pincode=request.POST['pincode']
+        email=request.POST['email']
+        obj2=Servicesmodel()
+        obj2.name=name
+        obj2.email=email
+        obj2.phn=phn
+        obj2.addr=addr
+        obj2.password=password
+        obj2.s_license=s_license
+        obj2.distric=distric
+        obj2.pincode=pincode
+        obj2.save()
+        return render(request,'care/Service_login.html')
+    else:
+        pass
     return render(request,'care/service_reg.html')
 
 def adminlogin(request):
@@ -106,8 +128,23 @@ def adminverify(request):
 
 
 
-def login(request):
-    return render(request,'care/Service_login.html')
+def login(request): 
+    if request.method == 'POST':
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        
+        user=Servicesmodel.objects.filter(email=email,password=password).first()
+        
+        if user is not None:
+            
+            return redirect("home")
+           
+        else: 
+            messages.success(request,"Username or password is incorrect") 
+    context={}        
+    
+    return render(request,'care/Service_login.html',context)
+   # return render(request,'care/Service_login.html')
 
 def update(request,id):
     context={}
