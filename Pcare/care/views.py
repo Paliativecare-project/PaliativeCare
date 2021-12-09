@@ -151,14 +151,14 @@ def login(request):
         user=Servicesmodel.objects.filter(email=email,password=password,status=1).first()
         
         if user is not None:
-            
-            return redirect("home")
-           
+            return redirect("sevicehome")  
         else: 
             messages.success(request,"Username or password is incorrect OR you are not approved by Admin") 
     context={}        
     
     return render(request,'care/Service_login.html',context)
+def sevicehome(request):
+    return render(request,'care/sevicehome.html')
    # return render(request,'care/Service_login.html')
 
 def update(request,id):
@@ -200,6 +200,9 @@ def approve(request,id):
 def logout_view(request):
     logout(request)
     return redirect('adminlogin')
+def logout_s(request):
+    logout(request)
+    return redirect('Service_login')
 
 
         
