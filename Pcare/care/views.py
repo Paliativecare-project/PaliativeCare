@@ -1,3 +1,4 @@
+from django import template
 from django.shortcuts import render,redirect,HttpResponse
 from django.http.response import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .models import Addservice, Users,Servicesmodel
@@ -6,6 +7,9 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .forms import TodoForm
 from django.contrib.auth.models import User,auth
+from django.core.mail import EmailMessage
+from django.conf import Settings, settings
+from django.template.loader import render_to_string
 # Create your views here.
 def index(request):
     return render(request,'care/index.html')
@@ -143,15 +147,15 @@ def login(request):
     if request.method == 'POST':
         email=request.POST.get('email')
         password=request.POST.get('password')
-        
-        user=Servicesmodel.objects.filter(email=email,password=password).first()
+        status=request.POST.get('status')
+        user=Servicesmodel.objects.filter(email=email,password=password,status=1).first()
         
         if user is not None:
             
             return redirect("home")
            
         else: 
-            messages.success(request,"Username or password is incorrect") 
+            messages.success(request,"Username or password is incorrect OR you are not approved by Admin") 
     context={}        
     
     return render(request,'care/Service_login.html',context)
@@ -173,6 +177,26 @@ def delete(request,id):
     if request.method == 'POST':
         Addservice.objects.get(id=id).delete()
         return redirect('adminedit')
+def delete1(request,id):
+    if request.method == 'POST':
+        Servicesmodel.objects.get(id=id).delete()
+        return redirect('adminverify')
+def approve(request,id):
+    if request.method == 'POST':
+        t=Servicesmodel.objects.get(id=id)
+        t.status=True
+        t.save()
+        #return redirect('adminverify')
+    #template=render_to_string('care/email_template.html',{'name':request.Servicesmodel.name})
+    
+    subject='Welcome to Caring Hands'
+    message='Hai {Servicesmodel.name}, You are approved by Admin.'
+    email_from=settings.EMAIL_HOST_USER
+    recipient_list=[Servicesmodel.email,]
+    EmailMessage(subject,message,email_from,recipient_list)
+    return redirect('adminverify')
+    #email.fail_silently=False
+    #email.send()
 def logout_view(request):
     logout(request)
     return redirect('adminlogin')

@@ -11,7 +11,7 @@
 
     <table id = "users">
         <tr>
-            <th>Id</th>
+            <!--<th>Id</th>-->
             <th>Name</th>
             <th>Email Address</th>
             <th>Phone</th>
@@ -21,9 +21,10 @@
             <th>Action</th>
         </tr>
         {% for i in item_list %}
-       
+        {% if i.status == 0 %}
+        
         <tr>
-            <td>{{forloop.counter}}</td>
+            <!--<td>{{forloop.counter}}</td>-->
             <td>{{i.name}}</td>
             <td>{{i.email}}</td>
             <td>{{i.phn}}</td>
@@ -32,13 +33,21 @@
             <td>{{i.s_license}}</td>
             <td>
                 <!--<form >
-                    <input type = "hidden" name  ="id" value = ""/>-->
-                    <input style="background-color:green;" type = "submit" name  ="approve" value = "Approve"/>
-                    
-                    <input style="background-color:red;" type = "submit" name  ="deny" value = "Deny"/>
-                <!--</form>-->
+                    <input type = "hidden" name  ="id" value = ""/>
+                    <input style="background-color:green;" type = "submit" name  ="approve" value = "Approve"/>-->
+                    <form action="{% url 'approve' i.id %}" method="POST" >
+                        {% csrf_token %}
+                        <input type="submit" class ='btn btn-danger' value="APPROVE"/>
+                    </form><br/>
+                    <form action="{% url 'delete1' i.id %}" method="POST" >
+                        {% csrf_token %}
+                        <input type="submit" class ='btn btn-danger' value="DENY"/>
+                    </form>
+                    <!--<input style="background-color:red;" type = "submit" name  ="deny" value = "Deny"/>
+                </form>-->
             </td>
         </tr>
+        {% endif %}
         {% endfor %}  
     </table>
 

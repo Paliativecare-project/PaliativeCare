@@ -15,6 +15,9 @@
               <h3><strong>Service Providers</strong></h3>
               <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
               </div>
+              {%for message in messages%}
+               <p id="messages" style="color:red;">{{message}}</p>
+              {%endfor%}
               <form action="#" method="post">
                 {% csrf_token %}
                 <div class="form-group first">
