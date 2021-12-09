@@ -10,6 +10,7 @@ from django.contrib.auth.models import User,auth
 from django.core.mail import EmailMessage
 from django.conf import Settings, settings
 from django.template.loader import render_to_string
+from django.core.mail import send_mail
 # Create your views here.
 def index(request):
     return render(request,'care/index.html')
@@ -188,12 +189,20 @@ def approve(request,id):
         t.save()
         #return redirect('adminverify')
     #template=render_to_string('care/email_template.html',{'name':request.Servicesmodel.name})
-    
     subject='Welcome to Caring Hands'
-    message='Hai {Servicesmodel.name}, You are approved by Admin.'
-    email_from=settings.EMAIL_HOST_USER
-    recipient_list=[Servicesmodel.email,]
-    EmailMessage(subject,message,email_from,recipient_list)
+    msg = ("%s %s %s" % ("Hai ",t.name,",  You are approved by Admin.'"))
+    send_mail(
+        subject,
+        msg,
+        'techsupport@teqstories.com',
+        [t.email],
+        fail_silently=False,
+    )
+    
+    
+    # email_from=settings.EMAIL_HOST_USER
+    # recipient_list=[Servicesmodel.email,]
+    # EmailMessage(subject,message,email_from,recipient_list)
     return redirect('adminverify')
     #email.fail_silently=False
     #email.send()
