@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from care.views import update,delete,approve,delete1
+from . views import *
 urlpatterns = [
     path('',views.index,name="home"),
     path('services/',views.services, name="services"),
@@ -29,4 +30,7 @@ urlpatterns = [
     path('sevicehome/',views.sevicehome, name="sevicehome"),
     path('Service_login/',views.login, name="Service_login"),
     #path('user_logout/',views.user_logout,name="logout"),
+    
+    
+    path('services/add/service',AddServiceView.as_view(),name="add_service"),
     ]

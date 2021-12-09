@@ -11,6 +11,8 @@ from django.core.mail import EmailMessage
 from django.conf import Settings, settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from django.views import View
+from .forms import *
 # Create your views here.
 def index(request):
     return render(request,'care/index.html')
@@ -212,6 +214,28 @@ def logout_view(request):
 def logout_s(request):
     logout(request)
     return redirect('Service_login')
+
+
+class AddServiceView(View):
+    def get(self, request):
+        user = request.user
+        print(user)
+        form = AddServiceForm()
+        context = {'form': form}
+        return render(request,'care/add_service.html',context)
+
+    def post(self, request):
+        user = request.user
+        form = AddServiceForm(request.POST)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.provider = user
+            f.save()
+
+            
+
+    
+
 
 
         

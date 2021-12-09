@@ -46,3 +46,12 @@ class Adminlogin(models.Model):
       return self.a_name
 class Addservice(models.Model):
     s_name=models.CharField(max_length=255)  
+
+    def __str__(self):
+      return self.s_name
+
+
+class UserService(models.Model):
+  provider = models.ForeignKey(Servicesmodel,on_delete=models.CASCADE)
+  service = models.ForeignKey(Addservice,on_delete=models.CASCADE)
+  
